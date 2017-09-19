@@ -1,0 +1,123 @@
+.blue {
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+}
+
+body {
+    background-color: #202020;
+}
+
+.container {
+    position: relative;
+    margin: 200px auto;
+    width: 300px;
+    height: 300px;
+    perspective: 500px;
+}
+
+.cube {
+    width: inherit;
+    height: inherit;
+    transform-style: preserve-3d;
+}
+.cube-other {
+    width: inherit;
+    height: inherit;
+    transform-style: preserve-3d;
+}
+
+.side {
+    position: absolute;
+    width: inherit;
+    height: inherit;
+}
+
+.front {
+    transform: translateZ(150px);
+    background-color: blue;
+}
+.back {
+    transform: rotateY(180deg) translateZ(150px);
+    background-color: blue;
+}
+.right {
+    transform: rotateY(90deg) translateZ(150px);
+    background-color: red;
+}
+.left {
+    transform: rotateY(-90deg) translateZ(150px);
+    background-color: red;
+}
+.top {
+    transform: rotateX(90deg) translateZ(150px);
+    background-color: green;
+}
+.bottom {
+    transform: rotateX(-90deg) translateZ(150px);
+    background-color: green;
+}
+/*transform: rotateY(27deg) rotateZ(27deg) translateZ(150px) translateX(-250px) translateY(150px) scale3d(0.3, 0.2, 0.1);*/
+
+/*.front {
+    transform: matrix3d(
+        1,    0,    2.4,    0,
+        0,    1,    0,    0,
+        0,    0,    1,    0,
+        -250, -50,  150,  1
+    );
+    background-color: blue;
+}*/
+/*.back {
+    transform: rotateY(180deg) translateZ(2480px) translateX(80px);
+    background-color: blue;
+}*/
+/*.right {
+    transform: rotateX(135deg) rotateY(135deg) translateZ(225px)  translateX(160px) scale3d(0.5, 0.2, 0.1);
+    background-color: red;
+}*/
+/*.left {
+    transform: rotateY(-90deg) translateZ(10px)  translateZ(180px);
+    background-color: red;
+}*/
+/*.top {
+    transform: rotateY(95deg) rotateX(90deg) rotateZ(90deg) translate3d(400px, -300px, 50px) scale3d(1, 5, 1);
+    background-color: green;
+}*/
+/*.bottom {
+    transform: rotateX(-90deg) translateZ(250px)  translateX(-640px)  scale3d(4, 2, 1);
+    background-color: green;
+}*/
+
+.button-cube {
+    width: 200px;
+    height: 45px;
+    margin-top: 12px;
+    border-radius: 30px;
+    box-shadow: 0 9px #999;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    font-size: 24px;
+    outline: none;
+}
+.button-cube:hover {
+    background-color: #3e8e41;
+    box-shadow: 0 8px #666;
+    transform: translateY(4px);
+}
+.button-cube:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.default {
+
+}
+.default-stop {
+
+}
+.default-allow {
+
+}

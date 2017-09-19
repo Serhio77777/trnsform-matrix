@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link href="styles/main.css" rel="stylesheet">
+    <title>Focus-Pocus</title>
+    <script src="scripts/main.js" defer></script>
+  </head>
+  <body>
+      <main>
+          <!-- <button class="button-cube default-allow" onclick="cubePower.createCube()">Собрать куб</button>
+          <button class="button-cube default-allow" onclick="cubePower.destroyCube()">Уничтожить куб</button> -->
+          <div class="another">
+              <button class="button-cube default" onclick="goDefault()">ClickMe</button>
+              <button class="button-cube default-stop" onclick="goDefaultStop()">Stop</button>
+              <button class="button-cube default-allow" onclick="goDefaultAllow()">Allow</button>
+          </div>
+          <button class="button-cube move-allow" onclick="move.allowMove()">Allow move</button>
+          <button class="button-cube move-stop" onclick="move.stopMove()">Stop move</button>
+          <button class="button-cube left-move" onclick="move.leftRigth('left')">X+</button>
+          <button class="button-cube right-move" onclick="move.leftRigth('right')">X-</button>
+          <button class="button-cube up-move" onclick="move.upDown('up')">Y+</button>
+          <button class="button-cube down-move" onclick="move.upDown('down')">Y-</button>
+          <button class="button-cube z-up-move" onclick="move.zRout('up')">Z+</button>
+          <button class="button-cube z-down-move" onclick="move.zRout('down')">Z-</button>
+          <div class="container">
+              <div id="cube-other" class="cube-other">
+                    <div id="front" class="side front"></div>
+                    <div id="back" class="side back"></div>
+                    <div id="right" class="side right"></div>
+                    <div id="left" class="side left"></div>
+                    <div id="top" class="side top"></div>
+                    <div id="bottom" class="side bottom"></div>
+              </div>
+          </div>
+      </main>
+  </body>
+</html>
