@@ -6,12 +6,12 @@ let xRoute = yRoute = zRoute = 0,
     xRoute = yRoute = zRoute = 0;
 
     document.onkeydown = function (element) {
-        if (element.keyCode === 65) y += 0.01;
-        if (element.keyCode === 83) x -= 0.01;
-        if (element.keyCode === 68) y -= 0.01;
-        if (element.keyCode === 87) x += 0.01;
-        if (element.keyCode === 81) z -= 0.01;
-        if (element.keyCode === 69) z += 0.01;
+        if (element.keyCode === 65) y += 0.04;
+        if (element.keyCode === 83) x -= 0.04;
+        if (element.keyCode === 68) y -= 0.04;
+        if (element.keyCode === 87) x += 0.04;
+        if (element.keyCode === 81) z -= 0.04;
+        if (element.keyCode === 69) z += 0.04;
 
         let transformMatrixCube = matrixTransform.multiplyArrayOfMatrices([
             matrixTransform.rotateAroundZAxis(Math.PI * z),
