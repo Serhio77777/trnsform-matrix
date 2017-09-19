@@ -1,7 +1,6 @@
 let xRoute = yRoute = zRoute = 0,
     permissionGoDefault = true;
 
-
 (function () {
     let x = y = z = 0;
     xRoute = yRoute = zRoute = 0;
@@ -19,11 +18,48 @@ let xRoute = yRoute = zRoute = 0,
             matrixTransform.rotateAroundXAxis(Math.PI * x),
             matrixTransform.rotateAroundYAxis(Math.PI * y)
         ]);
-        console.log(transformMatrixCube);
         document.getElementById('cube-other').style.transform = matrixTransform.matrixArrayToCssMatrix(transformMatrixCube);
     }
 })()
 
+let sides = [
+  {
+    side: document.getElementById('front'),
+    X: 0.5,
+    Y: 1,
+    Z: 1
+  },
+  {
+    side: document.getElementById('back'),
+    X: 1,
+    Y: 0.3,
+    Z: 0.6
+  },
+  {
+    side: document.getElementById('right'),
+    X: 0.3,
+    Y: 1,
+    Z: 1
+  },
+  {
+    side: document.getElementById('left'),
+    X: 0.6,
+    Y: 1,
+    Z: 0.3,
+  },
+  {
+    side: document.getElementById('top'),
+    X: 0.8,
+    Y: 0.51,
+    Z: 1,
+  },
+  {
+    side: document.getElementById('bottom'),
+    X: 0.2,
+    Y: 1.3,
+    Z: 0.5,
+  }
+]
 
 let matrixTransform = {};
 matrixTransform.multiplyMatrixAndPoint = function(matrix, point) {
@@ -114,7 +150,8 @@ matrixTransform.multiplyArrayOfMatrices = function (matrices) {
 }
 
 matrixTransform.matrixArrayToCssMatrix = function(array) {
-    return 'matrix3d(' + array.join(',') + ')';
+  sides[Math.floor(Math.random() * (6 - 0))].side.style.backgroundColor = 'rgb(' + Math.floor(Math.random() * (255 - 0)) + ', ' + Math.floor(Math.random() * (255 - 0)) + ', ' + Math.floor(Math.random() * (255 - 0)) + ')'
+  return 'matrix3d(' + array.join(',') + ')';
 }
 
 
@@ -220,119 +257,116 @@ move.allowMove = function() {
 }
 
 
+let cubePower = {};
 
-// document.getElementById('front').style.transform = matrixTransform.matrixArrayToCssMatrix(matrixTransform.multiplyArrayOfMatrices([
-//     matrixTransform.rotateAroundZAxis(Math.PI * 1),
-//     matrixTransform.rotateAroundXAxis(Math.PI * 1),
-//     matrixTransform.rotateAroundYAxis(Math.PI * 0.5),
-//     [
-//         1,    0,    0,    0,
-//         0,    0.6,    0,    0,
-//         0,    0,    1000,    0,
-//         400,  200,  100,    1
-//     ]
-// ]));
-// document.getElementById('back').style.transform = matrixTransform.matrixArrayToCssMatrix(matrixTransform.multiplyArrayOfMatrices([
-//     matrixTransform.rotateAroundZAxis(Math.PI * 0.6),
-//     matrixTransform.rotateAroundYAxis(Math.PI * 1),
-//     matrixTransform.rotateAroundXAxis(Math.PI * 0.3),
-//     [
-//         0.5,    0,    0,    0,
-//         0,    0.5,    0,    0,
-//         0,    0,    0.5,    0,
-//         -2200,  500,  -800,  1
-//     ]
-// ]));
-// document.getElementById('right').style.transform = matrixTransform.matrixArrayToCssMatrix(matrixTransform.multiplyArrayOfMatrices([
-//     matrixTransform.rotateAroundZAxis(Math.PI * 1),
-//     matrixTransform.rotateAroundYAxis(Math.PI * 1),
-//     matrixTransform.rotateAroundXAxis(Math.PI * 0.3),
-//     [
-//         0.5,    0,    0,    0,
-//         0,    0.5,    0,    0,
-//         0,    0,    0.5,    0,
-//         -500,  400,  100,   1
-//     ]
-// ]));
-// document.getElementById('left').style.transform = matrixTransform.matrixArrayToCssMatrix(matrixTransform.multiplyArrayOfMatrices([
-//     matrixTransform.rotateAroundZAxis(Math.PI * 0.6),
-//     matrixTransform.rotateAroundYAxis(Math.PI * 1),
-//     matrixTransform.rotateAroundXAxis(Math.PI * 0.3),
-//     [
-//         0.5,    0,    0,    0,
-//         0,    0.5,    0,    0,
-//         0,    0,    0.5,    0,
-//         -300,  -200,  100,  1
-//     ]
-// ]));
-// document.getElementById('top').style.transform = matrixTransform.matrixArrayToCssMatrix(matrixTransform.multiplyArrayOfMatrices([
-//     [
-//         1,    0,    0,    0,
-//         0,    1,    0,    0,
-//         0,    0,    1,    0,
-//        -1,  100,    -1000,    1
-//     ]
-// ]));
-// document.getElementById('bottom').style.transform = matrixTransform.matrixArrayToCssMatrix(matrixTransform.multiplyArrayOfMatrices([
-//     matrixTransform.rotateAroundZAxis(Math.PI * 0.6),
-//     matrixTransform.rotateAroundYAxis(Math.PI * 1),
-//     matrixTransform.rotateAroundXAxis(Math.PI * 0.3),
-//     [
-//         0.5,    0,    0,    0,
-//         0,    0.5,    0,    0,
-//         0,    0,    0.5,    0,
-//         400,  -300,  100,    1
-//     ]
-// ]));
-
-
-// let cubePower = {};
-//
-// cubePower.createCube = function() {
-//     let sideFront = document.getElementById('front'),
-//         sideBack = document.getElementById('back'),
-//         sideRight = document.getElementById('right'),
-//         sideLeft = document.getElementById('left'),
-//         sideTop = document.getElementById('top'),
-//         sideBottom = document.getElementById('bottom');
-//     cubePower.connectSide(sideFront, [
-//         1,    0,    0,    0,
-//         0,    0.6,    0,    0,
-//         0,    0,    1000,    0,
-//         400,  200,  100,    1
-//     ], 1, 1, 1, 1, 1, 1);
-//     // cubePower.connectSide(sideBack, [
-//     //     0.5,    0,    0,    0,
-//     //     0,    0.5,    0,    0,
-//     //     0,    0,    0.5,    0,
-//     //     -2200,  500,  -800,  1
-//     // ]);
-//     // cubePower.connectSide(sideRight, [
-//     //     0.5,    0,    0,    0,
-//     //     0,    0.5,    0,    0,
-//     //     0,    0,    0.5,    0,
-//     //     -500,  400,  100,   1
-//     // ]);
-//
-//     console.log(sideFront.style);
-// }
-// cubePower.destroyCube = function() {
-//     let sideFront = document.getElementById('front'),
-//         sideBack = document.getElementById('back'),
-//         sideRight = document.getElementById('right'),
-//         sideLeft = document.getElementById('left'),
-//         sideTop = document.getElementById('top'),
-//         sideBottom = document.getElementById('bottom');
-//
-// }
-// cubePower.connectSide = function(element, matrix, scaleSideX, scaleSideY, scaleSideZ, translateSideX, translateSideY, translateSideZ) {
-//     let scaleX = scaleSideX - matrix[0],
-//         scaleY = scaleSideY - matrix[4],
-//         scaleZ = scaleSideZ - matrix[9],
-//         translateX = translateSideX - matrix[12],
-//         translateY = translateSideY - matrix[13],
-//         translateZ = translateSideZ - matrix[14],;
-//     console.log(scaleX, scaleY, scaleZ, translateX, translateY, translateZ);
-// }
-//
-// // cubePower
+cubePower.createCube = function() {
+    let sideFront = document.getElementById('front'),
+        sideBack = document.getElementById('back'),
+        sideRight = document.getElementById('right'),
+        sideLeft = document.getElementById('left'),
+        sideTop = document.getElementById('top'),
+        sideBottom = document.getElementById('bottom');
+    cubePower.connectSide(sideFront, [
+        1,    0,    0,    0,
+        0,    1,    0,    0,
+        0,    0,    1,    0,
+        0,   0,    150,  1
+    ], 1, 1, 1, 1, 1, 1);
+    cubePower.connectSide(sideBack, [
+        -1,   0,    0,      0,
+        0,    1,    0,      0,
+        0,    0,    -1,     0,
+        0,    0,    -150,   1
+    ], 1, 1, 1, 1, 1, 1);
+    cubePower.connectSide(sideRight, [
+        0,    0,    -1,   0,
+        0,    1,    0,    0,
+        1,    0,    0,    0,
+        150,  0,    0,    1
+    ], 1, 1, 1, 1, 1, 1);
+    cubePower.connectSide(sideLeft, [
+        0,    0,    1,   0,
+        0,    1,    0,    0,
+        -1,   0,    0,    0,
+        -150, 0,    0,    1
+    ], 1, 1, 1, 1, 1, 1);
+    cubePower.connectSide(sideTop, [
+        1,    0,    0,    0,
+        0,    0,    1,    0,
+        0,    -1,   0,    0,
+        0,    -150, 0,    1
+    ], 1, 1, 1, 1, 1, 1);
+    cubePower.connectSide(sideBottom, [
+        1,    0,    0,    0,
+        0,    0,    -1,   0,
+        0,    1,    0,    0,
+        0,     150, 0,    1
+    ], 1, 1, 1, 1, 1, 1);
+    console.log(sideFront.style);
+}
+Array.prototype.shuffle = function() {
+    return this.sort(function() {
+        return 0.5 - Math.random();
+    });
+};
+cubePower.destroyCube = function() {
+    let matrixResults = [
+      [
+          1,    0,    0,    0,
+          0,    Math.random() * (1 - 0),    0,    0,
+          0,    0,    Math.floor(Math.random() * (1000 - 600)) + 600,    0,
+          Math.floor(Math.random() * (400 - 150)) + 150,  Math.floor(Math.random() * (200 - 50)) + 50,  Math.floor(Math.random() * (100 - 50)) + 50,    1
+      ],
+      [
+          Math.random() * (0.9 - 0.1),    0,    0,    0,
+          0,    Math.random() * (0.9 - 0.1),    0,    0,
+          0,    0,    Math.random() * (0.9 - 0.1),    0,
+          -1 * Math.floor(Math.random() * (2200 - 1500)) + 1500,  Math.floor(Math.random() * (600 - 250)) + 250,  -1 * Math.floor(Math.random() * (800 - 600)) + 600,    1
+      ],
+      [
+        Math.random() * (0.9 - 0.1),    0,    0,    0,
+        0,    Math.random() * (0.9 - 0.1),    0,    0,
+        0,    0,    Math.random() * (0.9 - 0.1),    0,
+        -1 * (Math.floor(Math.random() * (700 - 250)) + 250),  Math.floor(Math.random() * (600 - 125)) + 125,  Math.floor(Math.random() * (200 - 10)) + 10,    1
+      ],
+      [
+        Math.random() * (0.9 - 0.1),    0,    0,    0,
+        0,    Math.random() * (0.9 - 0.1),    0,    0,
+        0,    0,    Math.random() * (0.9 - 0.1),    0,
+        -1 * (Math.floor(Math.random() * (500 - 150)) + 150),  -1 * (Math.floor(Math.random() * (400 - 75)) + 75),  Math.floor(Math.random() * (200 - 10)) + 10,    1
+          -300,  -200,  100,  1
+      ],
+      [
+        Math.random() * (0.9 - 0.1),    0,    0,    0,
+        0,    Math.random() * (0.9 - 0.1),    0,    0,
+        0,    0,    Math.random() * (0.9 - 0.1),    0,
+        Math.floor(Math.random() * (600 - 250)) + 250,  -1 * (Math.floor(Math.random() * (500 - 125)) + 125),  Math.floor(Math.random() * (200 - 10)) + 10,    1
+      ],
+      [
+          1,    0,    0,    0,
+          0,    1,    0,    0,
+          0,    0,    1,    0,
+          -1 * Math.floor(Math.random() * (100 - 0)),  Math.floor(Math.random() * (200 - 10)) + 10,  -1 * (Math.floor(Math.random() * (1500 - 700)) + 700),    1
+      ]
+    ]
+    sides.forEach(element => {
+      element.side.style.transform = matrixTransform.matrixArrayToCssMatrix(matrixTransform.multiplyArrayOfMatrices([
+          matrixTransform.rotateAroundZAxis(Math.PI * element.Z),
+          matrixTransform.rotateAroundXAxis(Math.PI * element.X),
+          matrixTransform.rotateAroundYAxis(Math.PI * element.Y),
+          matrixResults[Math.floor(Math.random() * (6 - 0))]
+      ]));
+    })
+}
+cubePower.connectSide = function(element, matrix, scaleSideX, scaleSideY, scaleSideZ, translateSideX, translateSideY, translateSideZ) {
+  element.style.transform = matrixTransform.matrixArrayToCssMatrix(matrix)
+    // let scaleX = scaleSideX - matrix[0],
+    //     scaleY = scaleSideY - matrix[4],
+    //     scaleZ = scaleSideZ - matrix[9],
+    //     translateX = translateSideX - matrix[12],
+    //     translateY = translateSideY - matrix[13],
+    //     translateZ = translateSideZ - matrix[14];
+    // console.log(scaleX, scaleY, scaleZ, translateX, translateY, translateZ);
+}
+cubePower.destroyCube()
+// cubePower
